@@ -10,6 +10,7 @@ Original file is located at
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
 
 wine=datasets.load_wine()
 print(wine.data.shape)
@@ -23,3 +24,7 @@ print(X_test.shape)
 
 knn=KNeighborsClassifier(n_neighbors=6)
 knn.fit(X_train,y_train)
+
+y_pred=knn.predict(X_test)
+scores=accuracy_score(y_test,y_pred)
+print("Accuracy:",scores)
