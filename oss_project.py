@@ -8,7 +8,18 @@ Original file is located at
 """
 
 from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
 
 wine=datasets.load_wine()
 print(wine.data.shape)
 print(wine.target_names)
+
+X=wine.data
+y=wine.target
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=4)
+print(X_train.shape)
+print(X_test.shape)
+
+knn=KNeighborsClassifier(n_neighbors=6)
+knn.fit(X_train,y_train)
